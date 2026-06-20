@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wallabag-db
+  namespace: wallabag
+spec:
+  selector:
+    matchLabels:
+      app: wallabag-db
+  serviceName: wallabag-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wallabag-db
+    spec:
+      containers:
+        - name: wallabag-db
+          image: postgres:13
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+          - name: postgres-storage
+            mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: wallabag-container-env
+                  key: SYMFONY__ENV__DATABASE_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: wallabag-container-env
+                  key: SYMFONY__ENV__DATABASE_PASSWORD
+            - name: POSTGRES_DB
+              value: wallabag
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 1Gi
+  ordinals:
+    start: 1

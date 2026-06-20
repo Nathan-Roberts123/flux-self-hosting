@@ -1,0 +1,6 @@
+resources:
+  - namespace.yaml
+  - helmrepository.yaml
+  - helmrelease.yaml
+  - ./config/serviceaccount.yaml
+  - ./config/clustersecretstore.yaml
