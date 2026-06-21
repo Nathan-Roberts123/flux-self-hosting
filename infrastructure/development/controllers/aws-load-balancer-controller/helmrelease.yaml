@@ -17,6 +17,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    clusterName: cheap-learning-cluster
     serviceAccount:
       create: false
       name: aws-load-balancer-controller
