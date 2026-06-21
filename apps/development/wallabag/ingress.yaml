@@ -9,9 +9,8 @@ metadata:
       gethomepage.dev/group: Cluster Management
       gethomepage.dev/icon: wallabag.png
       gethomepage.dev/name: Wallabag
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
-  ingressClassName: nginx
+  ingressClassName: alb
   rules:
     - host: wallabag.nathank.store
       http:
