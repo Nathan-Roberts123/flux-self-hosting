@@ -4,5 +4,5 @@ metadata:
   name: aws-ebs-csi-driver
   namespace: ebs-csi
 spec:
-  interval: 24h
+  interval: 26h
   url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
