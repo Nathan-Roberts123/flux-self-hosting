@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
+  wait: true
   dependsOn:
     - name: infrastructure-controllers
   path: "./infrastructure/development/config"

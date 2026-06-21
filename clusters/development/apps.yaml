@@ -5,6 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 5m
+  dependsOn:
+    - name: infrastructure-config
   path: "./apps/development"
   prune: true
   sourceRef:
