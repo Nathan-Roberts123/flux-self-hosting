@@ -2,3 +2,4 @@ resources:
   - externalsecret.yaml
   - deployment.yaml
   - service.yaml
+  - volumesnapshot.yaml
