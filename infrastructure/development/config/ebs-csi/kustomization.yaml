@@ -1,0 +1,3 @@
+resources:
+  - serviceaccount.yaml
+  - storageclass.yaml
