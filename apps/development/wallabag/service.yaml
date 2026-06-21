@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: wallabag
   namespace: wallabag
+  annotations:
+    gethomepage.dev/description: Wallabag
 spec:
   ports:
     - protocol: TCP
