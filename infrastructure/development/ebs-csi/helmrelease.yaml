@@ -1,0 +1,33 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: aws-ebs-csi-driver
+  namespace: ebs-csi
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: aws-ebs-csi-driver
+      version: "2.59.x"
+      sourceRef:
+        kind: HelmRepository
+        name: aws-ebs-csi-driver
+        namespace: ebs-csi
+  values:
+    controller:
+      serviceAccount:
+        create: false
+        name: ebs-csi-controller-sa
+      replicaCount: 2
+      resources:
+        requests:
+          cpu: 10m
+          memory: 40Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi
+    node:
+      tolerateAllTaints: true
+    volumeSnapshotClasses:
+      - name: ebs-snapshot
+        deletionPolicy: Delete

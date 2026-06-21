@@ -1,0 +1,18 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: jellyfin-media-snapshot
+spec:
+  volumeSnapshotClassName: ebs-snapshot
+  source:
+    persistentVolumeClaimName: db-data-pvc # media pvc
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: jellyfin-config-snapshot
+spec:
+  volumeSnapshotClassName: ebs-snapshot
+  source:
+    persistentVolumeClaimName: db-logs-pvc # config pvc

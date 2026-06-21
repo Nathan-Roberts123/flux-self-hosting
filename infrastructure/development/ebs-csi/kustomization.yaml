@@ -1,0 +1,6 @@
+resource:
+  - namespace.yaml
+  - helmrepository.yaml
+  - helmrelease.yaml
+  - ./config/serviceaccount.yaml
+  - ./config/storageclass.yaml
