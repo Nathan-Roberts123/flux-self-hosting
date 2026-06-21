@@ -6,7 +6,7 @@ metadata:
 spec:
   releaseName: aws-load-balancer-controller
   targetNamespace: kube-system
-  interval: 5m
+  interval: 24m
   chart:
     spec:
       chart: aws-load-balancer-controller
