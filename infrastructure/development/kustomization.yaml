@@ -1,4 +1,4 @@
 resources:
   - ./external-secrets
-  - ./ebs-cli
+  - ./ebs-csi
   
