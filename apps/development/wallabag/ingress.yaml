@@ -9,6 +9,8 @@ metadata:
       gethomepage.dev/group: Cluster Management
       gethomepage.dev/icon: wallabag.png
       gethomepage.dev/name: Wallabag
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
 spec:
   ingressClassName: alb
   rules:
