@@ -3,8 +3,6 @@ kind: HelmRelease
 metadata:
   name: jellyfin
   namespace: flux-system
-  annotations:
-    trigger: true
 spec:
   interval: 1h
   targetNamespace: jellyfin
