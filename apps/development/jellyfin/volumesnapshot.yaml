@@ -6,7 +6,7 @@ metadata:
 spec:
   volumeSnapshotClassName: ebs-snapshot
   source:
-    persistentVolumeClaimName: db-data-pvc # media pvc
+    persistentVolumeClaimName: jellyfin-jellyfin-media # media pvc
 ---
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
@@ -15,4 +15,4 @@ metadata:
 spec:
   volumeSnapshotClassName: ebs-snapshot
   source:
-    persistentVolumeClaimName: db-logs-pvc # config pvc
+    persistentVolumeClaimName: jellyfin-jellyfin-config # config pvc
