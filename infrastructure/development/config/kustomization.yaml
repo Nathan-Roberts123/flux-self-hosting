@@ -2,4 +2,5 @@ resources:
   - ./external-secrets
   - ./ebs-csi
   - ./aws-load-balancer-controller
+  - ./volume-napshot-controller
   
