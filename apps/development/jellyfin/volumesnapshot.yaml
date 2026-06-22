@@ -3,6 +3,7 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   name: jellyfin-media-snapshot
+  namespace: jellyfin
 spec:
   volumeSnapshotClassName: ebs-snapshot
   source:
@@ -12,6 +13,7 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
   name: jellyfin-config-snapshot
+  namespace: jellyfin
 spec:
   volumeSnapshotClassName: ebs-snapshot
   source:
