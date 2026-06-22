@@ -6,4 +6,4 @@ metadata:
 spec:
   volumeSnapshotClassName: ebs-snapshot
   source:
-    persistentVolumeClaimName: postgres-storage 
+    persistentVolumeClaimName: postgres-storage-wallabag-db-0
