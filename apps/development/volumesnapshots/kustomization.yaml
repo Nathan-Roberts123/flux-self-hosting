@@ -1,0 +1,3 @@
+resources:
+  - wallabag.yaml
+  - jellyfin.yaml
