@@ -1,0 +1,2 @@
+resources:
+  - ./volume-snapshot-class.yaml
