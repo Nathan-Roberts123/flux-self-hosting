@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jellyfin
+  namespace: flux-system
+spec:
+  interval: 1h
+  targetNamespace: jellyfin
+  install:
+    createNamespace: true
+  chart:
+    spec:
+      chart: jellyfin
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: jellyfin
+        namespace: flux-system
+  
+  values:
+    replicaCount: 1
+  
+    image:
+      pullPolicy: IfNotPresent
+    
+    persistence:
+      config:
+        enabled: true
+        size: 4Gi
+        storageClass: 'gp3'
+      media:
+        enabled: true
+        size: 30Gi
+        storageClass: 'gp3'
+    
+    ingress:
+      enabled: true
+      className: 'alb'
+      annotations:
+        alb.ingress.kubernetes.io/target-type: 'ip'
+        alb.ingress.kubernetes.io/scheme: 'internet-facing'
+        alb.ingress.kubernetes.io/group.name: 'alb-group'
+      hosts:
+        - host: jellyfin.nathank.store
+          paths:
+            - path: /
+              pathType: Prefix
+    
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 4Gi
+      requests:
+        cpu: 500m
+        memory: 1Gi
+    
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}

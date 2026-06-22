@@ -11,6 +11,7 @@ metadata:
       gethomepage.dev/name: Wallabag
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/group.name: alb-group
 spec:
   ingressClassName: alb
   rules:
