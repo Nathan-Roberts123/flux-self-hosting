@@ -17,6 +17,8 @@ aws ssm put-parameter
 --type "SecureString" 
 --value '{"SYMFONY__ENV__DATABASE_PASSWORD": "your_password", "SYMFONY__ENV__DATABASE_USER": "your_db_user"}'
 
+create an AWS S3 Bucket for Terraform backend state
+
 cd Terraform
 terraform init
 terraform apply
