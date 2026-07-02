@@ -1,31 +1,42 @@
-Self host Wallabag and Jellyfin on EKS.
+# Self-Hosted Wallabag and Jellyfin on Amazon EKS
 
-Technologies:
-1. FluxCD
-2. EKS
-3. Terraform
-4. Kubernetes
-5. AWS
-6. Helm
+This project deploys self-hosted instances of Wallabag and Jellyfin on Amazon EKS using GitOps principles.
 
-To run this project:
+## Technologies Used
 
-Create Wallabag credentials on AWS
+* FluxCD
+* Amazon EKS
+* Terraform
+* Kubernetes
+* AWS
+* Helm
 
-aws ssm put-parameter 
---name "/K8s/Wallabag/wallabag-credentials" 
---type "SecureString" 
---value '{"SYMFONY__ENV__DATABASE_PASSWORD": "your_password", "SYMFONY__ENV__DATABASE_USER": "your_db_user"}'
+## Prerequisites
 
-create an AWS S3 Bucket for Terraform backend state
+Before deploying the infrastructure, create the Wallabag credentials in AWS Systems Manager Parameter Store:
 
-cd Terraform
+```bash
+aws ssm put-parameter \
+  --name "/K8s/Wallabag/wallabag-credentials" \
+  --type "SecureString" \
+  --value '{"SYMFONY__ENV__DATABASE_PASSWORD":"your_password","SYMFONY__ENV__DATABASE_USER":"your_db_user"}'
+```
+
+Create an S3 bucket that will be used as the Terraform backend for storing state files.
+
+## Deployment
+
+```bash
+cd terraform
 terraform init
 terraform apply
+```
 
-Clean up
+## Cleanup
 
-make sure to manually delete loadbalancers created by K8s ingress
+Before destroying the infrastructure, manually delete any load balancers created by Kubernetes Ingress resources to avoid dependency issues.
 
-cd Terraform
+```bash
+cd terraform
 terraform destroy
+```
